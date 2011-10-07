@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  period: 1
+  production: 1.5
+  potentialinit: 1.5
+  potentialcur: 1.5
+  growth: 1.5
+  efficiency: 1.5
+
+two:
+  period: 1
+  production: 1.5
+  potentialinit: 1.5
+  potentialcur: 1.5
+  growth: 1.5
+  efficiency: 1.5

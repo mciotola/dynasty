@@ -1,0 +1,66 @@
+<%= form_for(@simple) do |f| %>
+
+
+  <% if @simple.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@simple.errors.count, "error") %> prohibited this simple from being saved:</h2>
+
+      <ul>
+      <% @simple.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <H3>Please Enter the Regime Name:</H3>
+  <div class="field">
+      <%= f.label :regimename %>
+      <%= text_field :text1 %>  
+  </div>
+	  
+  <H3>Please enter start date of regime (Western Current Era Years):</H3>
+  <div class="field">
+      <%= f.label :startdate %>
+      <%= text_field :text2 %>  
+  </div>
+	  
+  <H3>Please enter end date of regime (Western Current Era Years):</H3>
+  <div class="field">
+      <%= f.label :enddate %>
+      <%= text_field :text3 %>  
+  </div>
+	  
+  <H3>Notes and Comments:</H3>
+  <div class="field">
+      <%= f.label :regimenotes %>
+      <%= text_field :text4, :size => "50" %>  
+  </div>
+
+  <H3>4. Choose A Growth Rate: </H3>
+  <div class="field">
+	<%= f.label :growthrate %>
+    <%= text_field :text5 %>  
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit  "Submit Your Parameters"%>
+  </div>
+  
+  
+<% end %>
+
+
+==================================
+
+
+	 
+
+
+
+
+
+

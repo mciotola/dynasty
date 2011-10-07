@@ -1,0 +1,2 @@
+module RegimesHelper
+end

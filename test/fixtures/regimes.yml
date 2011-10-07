@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  period: 1
+  production: 1.5
+
+two:
+  period: 1
+  production: 1.5

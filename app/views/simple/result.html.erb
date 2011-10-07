@@ -1,0 +1,117 @@
+  
+    <h1> Results for <%= @data1 %> Dynasty</h1>
+
+    <hr>
+	<H4>User-Selected Parameters:</H4>
+	<BR>	
+	Simulation/Regime Start Date (CE): <%= @data2 %>    <br><br>    
+    Simulation/Regime End Date (CE): <%= @data3 %>    <br><br>  
+    Growth Rate: <%= @data5 %><BR>
+	<BR>
+	
+    <% periods = 10 %>
+    <% grate = @data5 %>
+    <% growthrate = grate.to_f %>
+    <% beginyear = @data2.to_f %>
+    <% endyear = @data3.to_f %>
+	
+    <BR>
+	<H4>Calculated Parameter:</H4>
+    <br>
+    <% regimeincrement = (endyear.to_f - beginyear.to_f) / 10 %>
+    Increment = <%= regimeincrement.to_s %>  years
+	
+
+    <% year = @data2.to_f %>
+    <% growth = 0.0 %>
+
+    <% effnum = 1 %>
+    <% effden = 1 %>
+    <% efficiency = 1 %>
+    <% power = 1 %>
+    <% period = 0 %>
+    <% display = "" %>
+    <% firstyear = beginyear.to_f %>
+    <% firstyearround = firstyear.round %>
+ 
+ 	<HR>
+	<H3>Graphical Representation of Results:</H3>
+    <BR>
+
+    Year = <%= firstyearround.to_s + " |" %><BR>
+	
+    <% for value in 1..10 %>
+        <% year = year.to_f + regimeincrement.to_f %>
+		<% yearround = year.round %>
+        <% period = period + 1 %>
+        <% growth = power.to_f * growthrate %>
+        <% effnum = (year.to_f - beginyear.to_f) %>
+        <% effden = (endyear.to_f - beginyear.to_f) %>
+        <% efficiency = 1 - (effnum/effden) %>
+        <% efficiency =  efficiency.to_f %>
+        <% power = growth * efficiency %>
+        <% display = "X" * power %>
+		
+        Year = <%= (yearround.to_s + " | " + display.to_s)   %> <BR>
+    <% end %>  
+
+        <BR><BR>
+
+	
+	
+    <% growthrate = 2.81 %>
+    <% growth = 0 %>
+    <% effnum = 1 %>
+    <% effden = 1 %>
+    <% efficiency = 1 %>
+    <% power = 1 %>
+    <% period = 0 %>
+    <% display = "" %>
+	
+	<% year = @data2.to_f %>
+	
+	<HR>
+	<H3>Table of Results:</H3>
+	<BR>
+	
+<TABLE>
+    <TR> 
+    <TH>Year   </TH> <TH>     </TH> <TH>Growth</TH> <TH>     </TH>
+    <TH>Efficiency</TH> <TH>     </TH> <TH>Power</TH> </TR>
+    <TR><TD><%= firstyear.round.to_s  %></TD>  <TD></TD>  <TD ALIGN=RIGHT>0.000</TD>  <TD></TD>  <TD ALIGN=RIGHT>0.000</TD>  <TD></TD>  <TD ALIGN=RIGHT>1.00</TD>  <TD></TD>  </TR><BR>
+    <% for value in 1..10 %>
+    <TR>
+        <% year = year.to_f + regimeincrement.to_f %>
+        <% period = period + 1 %>
+        <% growth = power.to_f * growthrate %>
+        <% effnum = (year.to_f - beginyear.to_f) %>
+        <% effden = (endyear.to_f - beginyear.to_f) %>
+        <% efficiency = 1 - (effnum/effden) %>
+        <% efficiency = efficiency.to_f %>
+
+        <% power = growth * efficiency %>
+		<% yearround = year.round %>
+       <TD> <%= yearround.to_s %>  </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", growth) %> </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", efficiency) %> </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", power) %> </TD> <TD>     </TD>
+     </TR>
+    <% end %>
+    </TABLE>
+
+    <BR>
+    <HR>
+    <H3>Notes and Comments:</H3>
+	<BR>
+	<P>User Notes and Comments: <%= @data4 %> </P>
+	<P>Results are normalized. It is the relative values for years rather than the absolute values that are important in this simple simulation.<P>
+    <BR>
+
+
+    <HR>
+    <H4>Notice:</H4>Copyright 2010, 2011 by Mark Ciotola. GNU license.For further information, see historydynamics.com.</p>
+    <HR>
+
+
+
+

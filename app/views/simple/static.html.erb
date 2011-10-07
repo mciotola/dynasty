@@ -1,0 +1,103 @@
+<html>
+
+  <head>
+    <title>Regime generator Results</title>
+  </head>
+  
+  <body>
+    <h1> Results for Your Dynasty:</h1>
+    <br>
+    <hr>
+    <H3>Regime Name: <%= "My Regime" %></H3>
+    <hr><BR>
+	
+    <P>(Results are normalized. It is the relative values for years rather than the absolute values that are important in this simple simulation.)<P>
+    <% beginyear = 1500 %>
+    <% endyear = 1800 %>
+	Regime Start Date (CE): <%= beginyear %>    <br><br>    
+    Regime End Date (CE): <%= endyear %>    <br><br>    
+
+    <% regimeincrement = (endyear.to_f - beginyear.to_f) / 10 %>
+    Increment = <%= regimeincrement.to_s %> years
+	<BR><BR>
+    Growth Rate is: <%= 2.0 %>
+    <BR><BR>
+
+    <% year = beginyear.to_f %>
+    <% growth = 0.0 %>
+    <% growthrate = 2.80 %>
+
+    <% effnum = 1 %>
+    <% effden = 1 %>
+    <% efficiency = 1 %>
+    <% power = 1 %>
+    <% period = 0 %>
+    <% display = "" %>
+    <% firstyear = beginyear.to_f %>
+ 
+    Year = <%= firstyear.to_s + " |" %><BR>
+	
+    <% for value in 1..10 %>
+        <% year = year.to_f + regimeincrement.to_f %>
+        <% period = period + 1 %>
+        <% growth = power.to_f * growthrate %>
+        <% effnum = (year.to_f - beginyear.to_f) %>
+        <% effden = (endyear.to_f - beginyear.to_f) %>
+        <% efficiency = 1 - (effnum/effden) %>
+        <% efficiency =  efficiency.to_f %>
+        <% power = growth * efficiency %>
+        <% display = "X" * power %>
+        Year = <%= year.to_s + " | " + display.to_s   %> <BR>
+    <% end %>  
+
+        <BR><BR>
+    <% year = beginyear.to_f %>
+    <% growth = 0 %>
+    <% effnum = 1 %>
+    <% effden = 1 %>
+    <% efficiency = 1 %>
+    <% power = 1 %>
+    <% period = 0 %>
+    <% display = "" %>
+	
+<TABLE>
+    <TR> 
+    <TH>Year   </TH> <TH>     </TH> <TH>Growth</TH> <TH>     </TH>
+    <TH>Efficiency</TH> <TH>     </TH> <TH>Power</TH> </TR>
+    <TR><TD><%= firstyear.to_s  %></TD></TR><BR>
+    <% for value in 1..10 %>
+    <TR>
+        <% year = year.to_f + regimeincrement.to_f %>
+        <% period = period + 1 %>
+        <% growth = power.to_f * growthrate %>
+        <% effnum = (year.to_f - beginyear.to_f) %>
+        <% effden = (endyear.to_f - beginyear.to_f) %>
+        <% efficiency = 1 - (effnum/effden) %>
+        <% efficiency = efficiency.to_f %>
+
+        <% power = growth * efficiency %>
+       <TD> <%= year.to_s %>  </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", growth) %> </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", efficiency) %> </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", power) %> </TD> <TD>     </TD>
+     </TR>
+    <% end %>
+    </TABLE>
+	
+	
+        <BR>
+        <HR>
+         Notes and Comments: <%= "My comments ..." %>    <br><BR>
+         Future improvements:
+           - Allow user to set number of periods
+           - Allow for early, mid or late peak.
+        <BR><BR>
+        For further information, see historydynamics.com.
+
+<HR>
+Copyright 2010, 2011 by Mark Ciotola. GNU license.
+<HR>
+
+  </body>
+</html>
+

@@ -1,0 +1,64 @@
+== Welcome to DYNASTY
+
+	  DYNASTY is a simple web application to generate models of power profiles
+	  for major, durable, traditional, independent historical dynasties. 
+	  It utilizes the Efficiency Discounted Exponential Growth Method (EDEG).
+	  Parameters are the beginning and end years of the dynasty, and the growth rate.
+	  DYNASTY is written using Ruby on Rails.
+
+== Getting Started
+
+	  1. You will need to install these files on a computer that can run Linux or Unix.
+	  Installing then in the home directory works well for the author. Just copy over the
+	  whole directly.  The files and directories should not be rearranged but must be kept 
+	  in their original directories.  Directories and files should not be renamed unless 
+	  you are doing your own development and are familiar with Rails.
+
+	  2. Using your command line tool, you should install the required gems (software 
+	  components written in Ruby) by going to the root directory for DYNASTY and type:
+
+	  bundle install
+
+	  3. Wait until bundle install is completed. It may take awhile.  Then set up the DYNASTY 
+	  database by typing:
+
+	  rake db:migrate
+	  
+	  4. Activate the Rails server by typing:
+
+	  rails s
+
+	  5. Open your web browser and go to the following URL to locally see and use DYNASTY:
+
+	  http://localhost:3000/simple 
+
+	  6. Other users on your network might be able to see and use the application by using their
+	  browser to go to the URL for your computer (where DYNASTY is hosted) appended with ":3000"
+	  without the quotes. Whether this will work and for whom depends upon your network set-up. 
+	  Although DYNASTY is not intended to be a major web app, it might not be useful for individual
+	  computer labs or research clusters.
+
+
+== Instructions for Use
+
+	  To start, enter the beginning and end dates and growth rate.  Use a minus sign to indicate
+	  BC dates.  Typical dynasties last about 300 years.  Much longer dynasties might produce 
+	  incorrect results and are not good candidates for the assumptions of this simulation.
+	  For example, the Roman Empire lasted in some continuous form from about 0 AD to 1453 AD.
+	  Arguably, though, such long-lived regimes should be modeled as a series of shorter
+	  dynasties despite legal continuity.
+
+	  DYNASTY does not presently contain a database and saves no data.  Therefore, if you desire
+	  to save your simulation results, you should print them out (to paper or PDF) and/or copy
+	  and paste the results into a spreadsheet, etc.  The simulation provides both a results 
+	  table and a simple graphical output.
+
+
+== About
+	  DYNASTY is written using Ruby 1.9.2 with Rails 3.1.0. It uses Blueprint CSS templates.
+	  Developed by Mark Ciotola. See contact information at bottom of page.</P>
+	  
+== Copyright Notice
+
+	  DYNASTY is subject to the GNU License.
+

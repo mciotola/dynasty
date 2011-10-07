@@ -1,0 +1,25 @@
+<%= form_for(@regime) do |f| %>
+  <% if @regime.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@regime.errors.count, "error") %> prohibited this regime from being saved:</h2>
+
+      <ul>
+      <% @regime.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :period %><br />
+    <%= f.number_field :period %>
+  </div>
+  <div class="field">
+    <%= f.label :production %><br />
+    <%= f.text_field :production %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Period:</b>
+  <%= @regime.period %>
+</p>
+
+<p>
+  <b>Production:</b>
+  <%= @regime.production %>
+</p>
+
+
+<%= link_to 'Edit', edit_regime_path(@regime) %> |
+<%= link_to 'Back', regimes_path %>

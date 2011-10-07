@@ -1,0 +1,165 @@
+<html>
+
+  <head>
+    <title>Regime Generator Initiation</title>
+  </head>
+  
+  <body>
+  
+  <% growthrate = 2.81 %>
+  <% beginyear = 1600 %>
+  <% endyear = 1900 %>
+	  
+<%= form_tag "/simple/start" ,  :method =>"post" do  %>
+
+  <H3>Please Enter the Regime Name:</H3>
+  <div class="field">
+      <%= text_field_tag (:text1) %>  
+  </div>
+
+  <H3>Please enter start date of regime (Western Current Era Years):</H3>
+  <div class="field">
+      <%= text_field_tag (:text2) %>  
+  </div>
+	  
+  <H3>Please enter end date of regime (Western Current Era Years):</H3>
+  <div class="field">
+      <%= text_field_tag (:text3) %>  
+  </div>
+	  
+  <H3>Notes and Comments:</H3>
+  <div class="field">
+      <%= text_field_tag (:text4) %>  
+  </div>
+
+  <H3>Choose A Growth Rate: </H3>
+  <div class="field">
+    <%= text_field_tag (:text5) %>  
+  </div>
+
+  <div class="actions">
+    <%= submit_tag  "Submit Your Parameters"%>
+  </div>
+  
+<% end %>
+
+
+    <h1> Results for Your Dynasty:</h1>
+    <br>
+    <hr>
+    <H3>Regime Name: <%= "My Regime" %></H3>
+    <hr><BR>
+	
+    <P>(Results are normalized. It is the relative values for years rather than the absolute values that are important in this simple simulation.)<P>
+
+	
+	Simulation Start Date (CE): <%= @data2 %>    <br><br>    
+    Simulation End Date (CE): <%= @data3 %>    <br><br>  
+	
+	Regime Start Date (CE): <%= @data2.to_f %>    <br><br>    
+    Regime End Date (CE): <%= @data3.to_f %>    <br><br>    
+    <% beginyear = @data2.to_f %>
+    <% endyear = t@data3.to_f %>
+	
+	
+  
+    <% beginyear = @data2 %>
+    <% endyear = @data3 %>
+    <% periods = 15 %>
+    <% grate = @data5 %>
+
+	
+	
+	
+	
+    <% regimeincrement = (endyear.to_f - beginyear.to_f) / 10 %>
+   Increment = <%= regimeincrement.to_s %>  years<BR><br>
+    Growth Rate is: <%= 2.0 %>
+        <BR><BR>
+
+    <% year = @data2.to_f %>
+    <% growth = 0.0 %>
+    <% grate = 2.0 %>
+    <% growthrate = grate.to_f %>
+
+    <% effnum = 1 %>
+    <% effden = 1 %>
+    <% efficiency = 1 %>
+    <% power = 1 %>
+    <% period = 0 %>
+    <% display = "" %>
+    <% firstyear = beginyear.to_f %>
+ 
+    Year = <%= firstyear.to_s + " |" %><BR>
+	
+    <% for value in 1..10 %>
+        <% year = year.to_f + regimeincrement.to_f %>
+        <% period = period + 1 %>
+        <% growth = power.to_f * growthrate %>
+        <% effnum = (year.to_f - beginyear.to_f) %>
+        <% effden = (endyear.to_f - beginyear.to_f) %>
+        <% efficiency = 1 - (effnum/effden) %>
+        <% efficiency =  efficiency.to_f %>
+        <% power = growth * efficiency %>
+        <% display = power %>
+
+		
+		
+        Year = <%= year.to_s + " | " + display.to_s   %> <BR>
+    <% end %>  
+
+        <BR><BR>
+    <% year = beginyear.to_f %>
+    <% growthrate = 2.81 %>
+    <% growth = 0 %>
+    <% effnum = 1 %>
+    <% effden = 1 %>
+    <% efficiency = 1 %>
+    <% power = 1 %>
+    <% period = 0 %>
+    <% display = "" %>
+	
+<TABLE>
+    <TR> 
+    <TH>Year   </TH> <TH>     </TH> <TH>Growth</TH> <TH>     </TH>
+    <TH>Efficiency</TH> <TH>     </TH> <TH>Power</TH> </TR>
+    <TR><TD><%= firstyear.to_s  %></TD></TR><BR>
+    <% for value in 1..10 %>
+    <TR>
+        <% year = year.to_f + regimeincrement.to_f %>
+        <% period = period + 1 %>
+        <% growth = power.to_f * growthrate %>
+        <% effnum = (year.to_f - beginyear.to_f) %>
+        <% effden = (endyear.to_f - beginyear.to_f) %>
+        <% efficiency = 1 - (effnum/effden) %>
+        <% efficiency = efficiency.to_f %>
+
+        <% power = growth * efficiency %>
+       <TD> <%= year.to_s %>  </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", growth) %> </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf(" %.3f", efficiency) %> </TD> <TD>     </TD>
+       <TD ALIGN=RIGHT> <%= sprintf("%.3f", power) %> </TD> <TD>     </TD>
+     </TR>
+    <% end %>
+    </TABLE>
+	
+	
+        <BR>
+        <HR>
+         Notes and Comments: <%= "My comments ..." %>    <br><BR>
+         Future improvements:
+           - Allow user to set number of periods
+           - Allow for early, mid or late peak.
+        <BR><BR>
+        For further information, see historydynamics.com.
+
+
+<HR>
+Copyright 2010, 2011 by Mark Ciotola. GNU license.
+<HR>
+
+</body>
+</html>
+
+
+

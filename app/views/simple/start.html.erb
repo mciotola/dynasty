@@ -1,0 +1,88 @@
+
+  
+  <h1>History Dynasty Generator Initiation</h1>
+  <hr>
+      <H3.title>Introduction</H3>
+    <P>History is replete with the rise and fall of large dynasties. 
+	This application provides a simple way quantitatively simulate the rise and fall of the power of
+       a dynasty. 
+	   
+	   This simulation efficiency-discounts pure exponential growth to produce a model that can be roughly validated using anecdotal data
+	   and other techniques.
+	   Specifically, exponential growth is discounted by the decreasing
+       efficiency faced by the dynasty. Of course this is merely a
+       rough approximation, and a more complete representation
+       would add an empirical "noise" mask.</P>
+    <P>The value of this approach is that is allows a basis of debate 
+       and comparison. How well does the generated profile fit reality?
+       If not very well, then this suggests that one or more of the
+       assumptions is incorrect. Assumptions include that the regime is large, has "taken hold" and is substantially independent. The Principle of Fast 
+Entropy is also assumed. </P>
+
+    <P>Use this page to initiate the creation of a regime. All you need do is enter
+       the start and end dates of the regime. If desired, you can choose a
+       fast or slow growth rate. Please note that the terms "regime" and "dynasty" are used interchangeably.</P>
+    <p>This simulation is for educational and demonstration purposes. 
+	If desired, please contact the developer for more rigorous research quality simulations.</p>
+
+   <HR>
+
+
+  <%= form_tag :controller => "simple", :action => "result" ,  :method =>"post" do  %>
+<H3>Please enter your Parameters.</H3>
+
+
+
+  <H4>1. Please Enter the Regime Name:</H4>
+  <div class="field">
+	  <%= text_field_tag :text1, '', :size => "75" %>
+  </div>
+  <BR />
+
+  <H4>2. Please enter start date of regime:</H4>
+<P>(Western Current Era Years, use negative sign for BC):</P>
+  <div class="field">
+      <%= text_field_tag :text2, '', :size => 20  %>  
+  </div>
+  <BR />
+	  
+  <H4>3. Please enter end date of regime:</H4>
+  (Western Current Era Years, use negative sign for BC)
+  <div class="field">
+      <%= text_field_tag :text3, '', :size => 20    %>  
+  </div>
+  <BR />
+    <H4>4. Choose A Growth Rate:</H4>
+	(Between 2.0 to 2.8 is recommended)	
+    <div class="field">
+      <%= text_field_tag :text5, "2.5", :size => 10   %>  
+  </div>
+    <BR />
+
+  <H4>5. Notes and Comments:</H4>
+  <div class="field">
+      <%= text_area_tag(:text4, "", :size => "50x8") %>  
+  </div>
+
+
+<BR />
+
+
+
+
+
+  <div class="actions">
+    <%= submit_tag  "Submit Your Parameters"%>
+  </div>
+  
+  <% end %>
+
+      <BR>
+	  <HR>
+	  <BR>
+
+  
+
+
+<P>Copyright 2010, 2011 by Mark Ciotola. GNU license.</P>
+<HR>
